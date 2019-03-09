@@ -15,8 +15,10 @@ app.use(function (err, req, res, next) {
 
 
 app.get('/getCourseInfo',(req,res,next)=>{
-	// let courseIds = req.query.courseIds;
-	let courseIds = '238934,1259404';
+	let courseIds = req.query.courseIds;
+	if(courseIds === undefined){
+		courseIds = '238934';
+	}
 	courseIds = courseIds.split(",");
 	let getCourses = courseIds.map(n=>{
 		const url = `https://www.udemy.com/api-2.0/courses/${Number(n)}?fields[course]=title,num_subscribers,avg_rating`
