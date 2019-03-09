@@ -31,7 +31,7 @@ app.get('/getCourseInfo',(req,res,next)=>{
 			"icon":"i22143"
 		}));
 		body = {
-			"frames":[body]
+			"frames":body
 		}
 		res.send(body);
 	})
