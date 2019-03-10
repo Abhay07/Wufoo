@@ -29,9 +29,9 @@ app.get('/getCourseInfo',(req,res,next)=>{
 		const response = [];
 		body.forEach(n=>{
 			response.push({"text":n.title,"icon":"i22143"});
-			response.push({"text":String(n.avg_rating),"icon":"i22143"});
-			response.push({"text":String(n.num_reviews),"icon":"i22143"});
-			response.push({"text":String(n.num_subscribers),"icon":"i22143"});
+			response.push({"text":String(n.avg_rating),"icon":"i635"});
+			response.push({"text":String(n.num_reviews),"icon":"i120"});
+			response.push({"text":String(n.num_subscribers),"icon":"i2058"});
 		})
 		body = {
 			"frames":response
