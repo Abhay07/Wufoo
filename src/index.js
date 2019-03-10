@@ -21,7 +21,7 @@ app.get('/getCourseInfo',(req,res,next)=>{
 	}
 	courseIds = courseIds.split(",");
 	let getCourses = courseIds.map(n=>{
-		const url = `https://www.udemy.com/api-2.0/courses/${Number(n)}?fields[course]=title,num_subscribers,avg_rating`
+		const url = `https://www.udemy.com/api-2.0/courses/${Number(n)}?fields[course]=title,num_subscribers,avg_rating,num_reviews`
 		return axios.get(url);
 	})
 	Promise.all(getCourses).then(infos=>{
@@ -30,6 +30,7 @@ app.get('/getCourseInfo',(req,res,next)=>{
 		body.forEach(n=>{
 			response.push({"text":n.title,"icon":"i22143"});
 			response.push({"text":String(n.avg_rating),"icon":"i22143"});
+			response.push({"text":String(n.num_reviews),"icon":"i22143"});
 			response.push({"text":String(n.num_subscribers),"icon":"i22143"});
 		})
 		body = {
