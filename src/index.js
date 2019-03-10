@@ -26,12 +26,14 @@ app.get('/getCourseInfo',(req,res,next)=>{
 	})
 	Promise.all(getCourses).then(infos=>{
 		let body = infos.map(n=>n.data);
-		body = body.map(n=>({
-			"text":`Course: ${n.title}, Rating: ${n.avg_rating}, Students: ${n.num_subscribers}`,
-			"icon":"i22143"
-		}));
+		const response = [];
+		body.forEach(n=>{
+			response.push({"text":n.title,"icon":"i22143"});
+			response.push({"text":String(n.avg_rating),"icon":"i22143"});
+			response.push({"text":String(n.num_subscribers),"icon":"i22143"});
+		})
 		body = {
-			"frames":body
+			"frames":response
 		}
 		res.send(body);
 	})
