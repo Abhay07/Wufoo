@@ -1,8 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const axios = require('axios');
+const cors = require('cors');
+
 
 const app = express()
+const whitelist = ['https://abhay07.github.io', 'http://localhost:8081']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 app.listen(8080, () => console.log('Example app listening on port 3000!'))
 
 
@@ -35,6 +47,28 @@ app.get('/getCourseInfo',(req,res,next)=>{
 		})
 		body = {
 			"frames":response
+		}
+		res.send(body);
+	})
+	.catch(err=>{
+		next(err);
+	})
+})
+
+app.get('/getCourseInfoWeb',cors(corsOptions),(req,res,next)=>{
+	let courseIds = req.query.courseIds;
+	if(courseIds === undefined){
+		courseIds = '238934';
+	}
+	courseIds = courseIds.split(",");
+	let getCourses = courseIds.map(n=>{
+		const url = `https://www.udemy.com/api-2.0/courses/${Number(n)}?fields[course]=title,num_subscribers,avg_rating,num_reviews`
+		return axios.get(url);
+	})
+	Promise.all(getCourses).then(infos=>{
+		let body = infos.map(n=>n.data);
+		body = {
+			"infos":body
 		}
 		res.send(body);
 	})
