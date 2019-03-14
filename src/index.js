@@ -5,7 +5,7 @@ const cors = require('cors');
 
 
 const app = express()
-const whitelist = ['https://abhay07.github.io', 'http://localhost:8081']
+const whitelist = ['https://abhay07.github.io', 'http://localhost:8081','http://udemy.abhaysrivastav.net']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
