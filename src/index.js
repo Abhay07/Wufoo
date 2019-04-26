@@ -11,8 +11,8 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!')
 })
 
-app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}))
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}))
 
 
 app.post('/upload',(req,res,next)=>{
