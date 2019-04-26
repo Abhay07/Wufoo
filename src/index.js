@@ -24,8 +24,8 @@ app.post('/upload',(req,res,next)=>{
 	const data={
 		"contact":{
 			"Company":req.body.Field1,
-			"Lastname":req.body.Field3,
-			"Firstname":req.body.Field2,
+			"LastName":req.body.Field3,
+			"FirstName":req.body.Field2,
 			"Email":req.body.Field10,
 			"Phone":req.body.Field11,
 			"custom":{
