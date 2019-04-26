@@ -49,7 +49,7 @@ app.post('/upload',(req,res,next)=>{
 				"boolean--B2c--Lead--Generation--":(req.body.Field27 === 'B2c Lead Generation '),
 				"string--Services--Offered":req.body.Field12
 			},
-			"_autopilot_list":"#contactlist_72E57C91-3889-46EA-A304-0703CD9C64EE"
+			"_autopilot_list":"contactlist_72E57C91-3889-46EA-A304-0703CD9C64EE"
 		}
 	}
 	axios.post('https://api2.autopilothq.com/v1/contact',data,{headers:headers})
