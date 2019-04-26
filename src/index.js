@@ -27,7 +27,6 @@ app.post('/upload',(req,res,next)=>{
 			"Company":req.body.Field1,
 			"Lastname":req.body.Field2,
 			"Email":req.body.Field10,
-			"Company":req.body.
 			"_autopilot_list":"#contactlist_72E57C91-3889-46EA-A304-0703CD9C64EE"
 		}
 	}
