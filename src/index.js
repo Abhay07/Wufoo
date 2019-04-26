@@ -16,10 +16,9 @@ app.use(function (err, req, res, next) {
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
-const 
 app.post('/upload',(req,res,next)=>{
 	const headers = {
-		'autopilotapikey':key
+		'autopilotapikey':key,
 		'Content-Type':'application/json'
 	}
 	const data={
