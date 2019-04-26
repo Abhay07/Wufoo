@@ -21,7 +21,6 @@ app.post('/upload',(req,res,next)=>{
 		'autopilotapikey':key,
 		'Content-Type':'application/json'
 	}
-	console.log(req.body);
 	const data={
 		"contact":{
 			"Company":req.body.Field1,
@@ -55,6 +54,7 @@ app.post('/upload',(req,res,next)=>{
 	}
 	axios.post('https://api2.autopilothq.com/v1/contact',data,{headers:headers})
 	.then((response)=>{
+		console.log(response.data);
 	})
 	.catch((error)=>{
 		console.log(error);
